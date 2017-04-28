@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+	<script src="components/loader.js"></script>
+	<link rel="stylesheet" href="components/loader.css">
+	<link rel="stylesheet" href="css/material-icons.css">
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+	</script>
+</head>
+
+<body>
+	<div class="views">
+		<div class="view view-main">
+			<div class="pages navbar-fixed toolbar-fixed">
+
+				<div data-page="Preferencias" class="page cached">
+					<div class="page-content">
+						... Preferencias ...
+					</div>
+				</div>
+
+				<div data-page="Autorizaciones" class="page cached">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="left"><a href="#" class="link open-autorizaciones"><i class="material-icons">menu</i></a></div>
+							<div class="center">Autorizaciones</div>
+						</div>
+					</div>
+					<div class="popover popover-autorizaciones">
+						<div class="popover-angle"></div>
+						<div class="popover-inner">
+							<div class="list-block">
+								<ul>
+									<li><a onclick="loadPageCustom('Notificaciones')" class="list-button item-link">Notificaciones</a></li>
+									<li><a onclick="loadPageCustom('Preferencias')" class="list-button item-link">Preferencias</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="page-content">
+						... Autorizaciones ...
+					</div>
+				</div>
+
+				<div data-page="Notificaciones" class="page cached">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<!--<div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>-->
+							<div class="left"><a href="#" class="link open-notificaciones"><i class="material-icons">menu</i></a></div>
+							<div class="center">Notificaciones</div>
+							<div class="right"><a href="#" data-popup=".popup-rangeNotification" class="link open-popup"><i id="_filterNotification" class="material-icons">filter_list</i></a></div>
+						</div>
+					</div>
+					<div class="popup popup-rangeNotification">
+						<div class="view navbar-fixed">
+							<div class="pages">
+								<div class="page">
+									<div class="navbar">
+										<div class="navbar-inner">
+											<div class="left"><a href="#" class="link remove-range-notification"><i class="material-icons">close</i></a></div>
+											<div class="center">Rangos</div>
+											<div class="right"><a href="#" class="link apply-range-notification"><i class="material-icons">check</i></a></div>
+										</div>
+									</div>
+									<div class="page-content">
+										<div class="list-block" style="margin-top: 0px">
+											<ul>
+												<li>
+													<div class="item-content">
+														<div class="item-inner">
+															<div class="item-title label">Desde</div>
+															<div class="item-input">
+																<input id="DDFechaNotif" type="date" name="name" placeholder="DD/MM/YYYY">
+															</div>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="item-content">
+														<div class="item-inner">
+															<div class="item-title label">Hasta</div>
+															<div class="item-input">
+																<input id="HHFechaNotif" type="date" name="name" placeholder="DD/MM/YYYY">
+															</div>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+
+										<!--<div class="content-block-title">Fecha</div>
+										<form class="list-block">
+											<ul>
+												<li>
+													<div class="item-content">
+														<div class="item-inner">
+															<div class="item-title label">Desde</div>
+															<div class="item-input">
+																<input id="DDFechaNotif" type="date" name="name" placeholder="DD/MM/YYYY">
+															</div>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="item-content">
+														<div class="item-inner">
+															<div class="item-title label">Hasta</div>
+															<div class="item-input">
+																<input id="HHFechaNotif" type="date" name="name" placeholder="DD/MM/YYYY">
+															</div>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</form>
+										<div class="content-block" style="margin-top: 0px">
+											<p>Here comes popup. You can put here anything, even independent view with its own navigation. Also not, that by
+												default popup looks a bit different on iPhone/iPod and iPad, on iPhone it is fullscreen.</p>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus mauris leo, eu bibendum neque congue
+												non. Ut leo mauris, eleifend eu commodo a, egestas ac urna. Maecenas in lacus faucibus, viverra ipsum pulvinar,
+												molestie arcu. Etiam lacinia venenatis dignissim. Suspendisse non nisl semper tellus malesuada suscipit eu et
+												eros. Nulla eu enim quis quam elementum vulputate. Mauris ornare consequat nunc viverra pellentesque. Aenean
+												semper eu massa sit amet aliquam. Integer et neque sed libero mollis elementum at vitae ligula. Vestibulum pharetra
+												sed libero sed porttitor. Suspendisse a faucibus lectus.</p>
+											<p>Duis ut mauris sollicitudin, venenatis nisi sed, luctus ligula. Phasellus blandit nisl ut lorem semper pharetra.
+												Nullam tortor nibh, suscipit in consequat vel, feugiat sed quam. Nam risus libero, auctor vel tristique ac, malesuada
+												ut ante. Sed molestie, est in eleifend sagittis, leo tortor ullamcorper erat, at vulputate eros sapien nec libero.
+												Mauris dapibus laoreet nibh quis bibendum. Fusce dolor sem, suscipit in iaculis id, pharetra at urna. Pellentesque
+												tempor congue massa quis faucibus. Vestibulum nunc eros, convallis blandit dui sit amet, gravida adipiscing libero.</p>
+											<p>Morbi posuere ipsum nisl, accumsan tincidunt nibh lobortis sit amet. Proin felis lorem, dictum vel nulla quis,
+												lobortis dignissim nunc. Pellentesque dapibus urna ut imperdiet mattis. Proin purus diam, accumsan ut mollis
+												ac, vulputate nec metus. Etiam at risus neque. Fusce tincidunt, risus in faucibus lobortis, diam mi blandit nunc,
+												quis molestie dolor tellus ac enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum
+												turpis a velit vestibulum pharetra. Vivamus blandit dapibus cursus. Aenean lorem augue, vehicula in eleifend
+												ut, imperdiet quis felis.</p>
+											<p>Duis non erat vel lacus consectetur ultricies. Sed non velit dolor. Cum sociis natoque penatibus et magnis dis
+												parturient montes, nascetur ridiculus mus. Proin vel varius mi, a tristique ante. Vivamus eget nibh ac elit tempor
+												bibendum sit amet vitae velit. Proin sit amet dapibus nunc, non porta tellus. Fusce interdum vulputate imperdiet.
+												Sed faucibus metus at pharetra fringilla. Fusce mattis orci et massa congue, eget dapibus ante rhoncus. Morbi
+												semper sed tellus vel dignissim. Cras vestibulum, sapien in suscipit tincidunt, lectus mi sodales purus, at egestas
+												ligula dui vel erat. Etiam cursus neque eu lectus eleifend accumsan vitae non leo. Aliquam scelerisque nisl sed
+												lacus suscipit, ac consectetur sapien volutpat. Etiam nulla diam, accumsan ut enim vel, hendrerit venenatis sem.
+												Vestibulum convallis justo vitae pharetra consequat. Mauris sollicitudin ac quam non congue.</p>
+										</div>-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form data-search-list=".lb-notificaciones" class="searchbar searchbar-init sb-notificaciones">
+						<div class="searchbar-input">
+							<input type="search" placeholder="Buscar..." />
+							<a href="#" class="searchbar-clear"></a>
+						</div>
+					</form>
+					<div class="searchbar-overlay"></div>
+					<div class="popover popover-notificaciones">
+						<div class="popover-angle"></div>
+						<div class="popover-inner">
+							<div class="list-block">
+								<ul>
+									<li><a onclick="loadPageCustom('Autorizaciones')" class="list-button item-link">Autorizaciones</a></li>
+									<li><a onclick="loadPageCustom('Preferencias')" class="list-button item-link">Preferencias</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="page-content pull-to-refresh-content" data-ptr-distance="55">
+						<div class="pull-to-refresh-layer">
+							<div class="preloader"></div>
+							<div class="pull-to-refresh-arrow"></div>
+						</div>
+						<div class="list-block virtual-list searchbar-found media-list lb-notificaciones" style="margin-top: 0px">
+
+						</div>
+						<div class="list-block searchbar-not-found" style="margin-top: 0px">
+							<ul>
+								<li class="item-content">
+									<div class="item-inner">
+										<div class="item-title">No hay elementos..</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				
+
+			</div>
+		</div>
+	</div>
+	<!--Services-->
+	<script src="scripts/preferencias/PreferenciasService.js"></script>
+	<script src="scripts/autorizaciones/AutorizacionesService.js"></script>
+	<script src="scripts/notificaciones/NotificacionesService.js"></script>
+	<!--Controller-->
+	<script src="scripts/notificaciones/NotificacionesCtrl.js"></script>
+	<script src="scripts/autorizaciones/AutorizacionesCtrl.js"></script>
+	<script src="scripts/preferencias/PreferenciasCtrl.js"></script>
+	<!--Main-->
+	<script src="scripts/app.js"></script>
+
+</body>
+
+</html>
