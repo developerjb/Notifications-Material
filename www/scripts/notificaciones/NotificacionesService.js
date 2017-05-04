@@ -25,14 +25,15 @@ NotificacionesService = {
 	},
 	selected: null,
 	getAllForUser: function (callback, range) {
+		var self = this;
 		var data = {
 			id: 'CLO-2',
 			Usuario_Id: PreferenciasService.values.usuario_id,
 			_userName: PreferenciasService.values.usuario_id,
 			_connectionStringId: '-',//PreferenciasService.values.conexion
 			hasRange: 1,
-			DDFecha: NotificacionesService.rangeNotification.DDFecha,
-			HHFecha: NotificacionesService.rangeNotification.HHFecha
+			DDFecha: self.rangeNotification.DDFecha,
+			HHFecha: self.rangeNotification.HHFecha
 		}
 
 		// if(range) {
@@ -52,6 +53,7 @@ NotificacionesService = {
 			error: function () {
 				myApp.alert('Revise la configuración de conexión (tiempo de espera agotado).', 'Servidor no encontrado');
 				// $$('#count-notificaciones').hide();
+				NotificacionesService.data = [];
 				callback([]);
 			}
 		});

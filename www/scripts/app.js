@@ -1,7 +1,8 @@
 var notificacionesCtrl = autorizacionesCtrl = preferenciasCtrl = sbNotificaciones = vlNotificaciones = null,
 	myApp = new Framework7({
 		material: true,
-		template7Pages: true
+		template7Pages: true,
+		precompileTemplates: true
 	}),
 	$$ = Dom7,
 	mainView = myApp.addView('.view-main', {
@@ -9,27 +10,50 @@ var notificacionesCtrl = autorizacionesCtrl = preferenciasCtrl = sbNotificacione
 	}),
 	AJAX_TIMEOUT = 10000;
 
-function onBackKeyDown() { 
+function onBackKeyDown() {
 	console.log(mainView.activePage.name);
 	var currentPage = mainView.activePage.name;
-	if(currentPage != 'Notificaciones' && currentPage != 'Autorizaciones' && currentPage != 'Preferencias'){
+	if (currentPage != 'Notificaciones' && currentPage != 'Autorizaciones' && currentPage != 'Preferencias') {
 		mainView.router.back();
-	}else{
+	} else {
 		navigator.app.exitApp();
 	}
 }
 
 document.addEventListener('deviceready', function () {
 	document.addEventListener("backbutton", onBackKeyDown, false);
-	mainView.router.load({ pageName: 'Notificaciones' });
+	mainView.router.load({
+		url: 'pages/template_notificaciones.html',
+		animatePages: false
+	});
+
 	setDatabase(function () {
 		initApp();
 	});
 })
 
 function loadPageCustom(page) {
-	mainView.router.load({ pageName: page, animatePages: false});
-	if(page == 'Notificaciones'){
+	var template = {
+		Notificaciones: 'pages/template_notificaciones.html',
+		Autorizaciones: 'pages/template_autorizaciones.html',
+		Preferencias: 'pages/template_preferencias.html'
+	};
+	var urlTemplate = true;
+
+	myApp.cache.forEach(function (el) {
+		if (el.url == template[page]) {
+			urlTemplate = false;
+		}
+	})
+
+	if (urlTemplate) {
+		mainView.router.load({ url: template[page], animatePages: false });
+	} else {
+		mainView.router.load({ pageName: page, animatePages: false });
+	}
+
+
+	if (page == 'Notificaciones') {
 		vlNotificaciones.update();
 	}
 	myApp.closeModal();
@@ -39,8 +63,11 @@ function initApp() {
 	myApp.showPreloader('Obteniendo...');
 	//GET de registro de Notification
 	NotificacionesCtrl.defaultRangeView();
+	AutorizacionesCtrl.defaultRangeView();
 	NotificacionesService.getAllForUser(function () {
 		NotificacionesCtrl.init();
+		AutorizacionesService.getAllForUser(function () { });
+		AutorizacionesCtrl.init();
 		myApp.hidePreloader();
 	})
 
@@ -49,11 +76,6 @@ function initApp() {
 function setDatabase(success, error) {
 	success();
 }
-
-$$('.open-notificaciones').on('click', function () {
-	var clickedLink = this;
-	myApp.popover('.popover-notificaciones', clickedLink);
-});
 
 $$('.open-autorizaciones').on('click', function () {
 	var clickedLink = this;

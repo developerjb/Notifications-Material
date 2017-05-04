@@ -1,18 +1,84 @@
-<div class="list-block media-list" style="margin-top: 0px">				      	
-	<ul>
-		{{#each autorizaciones}}
-		<li>
-		  <a href="#" class="item-link item-content">
-			  <div class="item-inner">
-			    <div class="item-title-row">
-			      <div class="item-title">Instagram</div>
-			      <div class="item-after">18:00</div>
-			    </div>
-			    <div class="item-subtitle">New messages from Instagram</div>
-			    <div class="item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.</div>
-			  </div>
-			</a>
-		</li>
-		{{/each}}
-	</ul>
+<div data-page="Autorizaciones" class="page cached">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="left"><a href="#" class="link open-autorizaciones"><i class="material-icons">&#xE5D2;</i></a></div>
+			<div class="center">Autorizaciones</div>
+			<div class="right"><a href="#" data-popup=".popup-rangeAutorizacion" class="link open-popup"><i id="_filterAutorizacion" class="material-icons">&#xE152;</i></a></div>
+		</div>
+	</div>
+
+	<div class="popup popup-rangeAutorizacion">
+		<div class="view navbar-fixed">
+			<div class="pages">
+				<div class="page">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="left"><a href="#" class="link remove-range-notification"><i class="material-icons">&#xE5CD;</i></a></div>
+							<div class="center">Rangos</div>
+							<div class="right"><a href="#" class="link apply-range-notification"><i class="material-icons">&#xE5CA;</i></a></div>
+						</div>
+					</div>
+					<div class="page-content">
+						<div class="list-block" style="margin-top: 0px">
+							<ul>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">Desde</div>
+											<div class="item-input">
+												<input id="DDFechaAutori" type="date" name="name" placeholder="DD/MM/YYYY">
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">Hasta</div>
+											<div class="item-input">
+												<input id="HHFechaAutori" type="date" name="name" placeholder="DD/MM/YYYY">
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="popover popover-autorizaciones">
+		<div class="popover-angle"></div>
+		<div class="popover-inner">
+			<div class="list-block">
+				<ul>
+					<li><a onclick="loadPageCustom('Notificaciones')" class="list-button item-link">Notificaciones</a></li>
+					<li><a onclick="loadPageCustom('Preferencias')" class="list-button item-link">Preferencias</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+		<form data-search-list=".lb-autorizaciones" class="searchbar searchbar-init sb-autorizaciones">
+		<div class="searchbar-input">
+			<input type="search" placeholder="Buscar..." />
+			<a href="#" class="searchbar-clear"></a>
+		</div>
+	</form>
+	<div class="searchbar-overlay"></div>
+	<div class="page-content">
+		<div class="list-block virtual-list  media-list lb-autorizaciones" style="margin-top: 0px">
+		</div>
+		<div class="list-block searchbar-not-found" style="margin-top: 0px">
+			<ul>
+				<li class="item-content">
+					<div class="item-inner">
+						<div class="item-title">No hay elementos.</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--... Autorizaciones ...-->
+	</div>
 </div>

@@ -5,24 +5,19 @@
       <div class="center">Detalles</div>
     </div>
   </div>
-  <div class="page-content" >
-
-
+  <div class="page-content" style="padding-top: 52px;" >
     <div class="content-block-title">DATOS BÁSICOS</div>
     <div class="list-block accordion-list inset">
       <ul>
         <li class="accordion-item">
           <a href="#" class="item-link item-content">
             <div class="item-inner">
-              <div class="item-title">Lorem Ipsum</div>
+              <div class="item-title">Acción</div>
             </div>
           </a>
           <div class="accordion-item-content">
             <div class="content-block">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum id neque nec commodo. Sed vel justo
-                at turpis laoreet pellentesque quis sed lorem. Integer semper arcu nibh, non mollis arcu tempor vel. Sed
-                pharetra tortor vitae est rhoncus, vel congue dui sollicitudin. Donec eu arcu dignissim felis viverra blandit
-                suscipit eget ipsum.</p>
+              <p>{{this.TituloMensaje}}</p>
             </div>
           </div>
         </li>
@@ -31,7 +26,7 @@
             <div class="item-inner">
               <div class="item-title floating-label">Fecha</div>
               <div class="item-input">
-                <input type="text" value="{{this.Fecha}}" disabled>
+                <input type="text" value="{{formatDate this.Fecha}}" disabled>
               </div>
             </div>
           </div>
@@ -60,6 +55,8 @@
     </div>
 
   </div>
+
+  
 </div>
 
 

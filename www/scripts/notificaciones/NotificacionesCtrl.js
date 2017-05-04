@@ -1,10 +1,13 @@
 NotificacionesCtrl = {
 	service: NotificacionesService,
 	init: function () {
+		var self = this;
+		
 		var ptrNotificaciones = $$('.pull-to-refresh-content');
 		ptrNotificaciones.on('ptr:refresh', function (e) {
 			NotificacionesService.getAllForUser(function (data) {
 				sbNotificaciones.clear();
+				vlNotificaciones.clearCache();
 				$$('.searchbar-clear').click();
 				vlNotificaciones.items = data;
 				vlNotificaciones.update();
@@ -13,10 +16,8 @@ NotificacionesCtrl = {
 		})
 		sbNotificaciones = myApp.searchbar('.sb-notificaciones');
 		vlNotificaciones = myApp.virtualList('.lb-notificaciones', {
-			items: this.service.data,
-			//cache:false,
+			items: self.service.data,
 			emptyTemplate: '<li class="item-content"><div class="item-inner"><div class="item-title">No hay elementos..</div></div></li>',
-			//updatableScroll: true, 
 			searchAll: function (query, items) {
 				var found = [];
 				for (var i = 0; i < items.length; i++) {
@@ -24,19 +25,25 @@ NotificacionesCtrl = {
 				}
 				return found;
 			},
-			template: '<li>' +
+			template: '<li style="height: 83px;">' +
 			'<a onclick="NotificacionesCtrl.loadPageAutorizacion({{@index}},{{Notificacion_Id}})" class="item-link item-content">' +
-			'<div class="item-inner">' +
-			'<div class="item-title-row">' +
-			'<div class="item-title">{{TituloMensaje}}</div>' +
-			'<div class="item-after">{{FechaGroup}}</div>' +
-			'</div>' +
-			'<div class="item-subtitle">{{TextoMensaje}}</div>' +
-			'<div class="item-text">{{UsuarioOrigen}}</div>' +
-			'</div>' +
+				'<div class="item-inner">' +
+					'<div class="item-title-row">' +
+						'<div class="item-title">{{blackface TituloMensaje Leida}}</div>' +
+						'<div class="item-after">{{blackface FechaGroup Leida}} </div>' +
+					'</div>' +
+					'<div class="item-subtitle">{{blackface TextoMensaje Leida}}</div>' +
+					'<div class="item-text">{{blackface UsuarioOrigen Leida}}</div>' +
+				'</div>' +
 			'</a>' +
 			'</li>',
-			height: 84
+			height: 83,
+			// function(){
+			// 	if($$('html').height() > 600){
+			// 		return 93
+			// 	}
+			// 	return 83; 
+			// },
 		});
 		
 		$$('.popup-rangeNotification').on('popup:open', function () {
@@ -46,7 +53,8 @@ NotificacionesCtrl = {
 		});
 
 		function loadDateGetRangos (dd, hh){
-			var s = NotificacionesService;
+			var s = self.service;
+			myApp.showPreloader('Obteniendo...');
 			function combination(c,v){
 				return c ? s.formatDateString(v,'-','/') : s.convertDate(new Date());
 			}
@@ -56,6 +64,7 @@ NotificacionesCtrl = {
 				vlNotificaciones.items = data;
 				vlNotificaciones.update();
 				myApp.closeModal('.popup-rangeNotification');
+				myApp.hidePreloader();
 			})
 		}
 
@@ -68,34 +77,45 @@ NotificacionesCtrl = {
 			loadDateGetRangos();
 			$$('#_filterNotification').css({'color':''})
 		});
+
+		$$('.open-notificaciones').on('click', function () {
+			var clickedLink = this;
+			myApp.popover('.popover-notificaciones', clickedLink);
+		});
+
+		myApp.onPageBack('Notificacion',function(){
+			vlNotificaciones.clearCache();
+			vlNotificaciones.update();
+		})
 	},
 	setAsRead: function(index, notificacionId) {
-		this.service.setAsRead(notificacionId, function(){
-			$$('#n-' + notificacionId.toString()).hide();
+		var self = this;
+		self.service.setAsRead(notificacionId, function(){
 			self.service.data[index].Leida = 1;
-			//change sum of unread items (app badge)
-			//self.service.setUnreadCounter();
 		});
 	},
 	loadPageAutorizacion: function (index, notificacionId) {
+		var self = this;
 		if(navigator.connection.type === 'none') {
 			myApp.alert('No hay conexión a Internet.', 'No se puede recibir datos');
 			return;
 		}
-
-		//this.setAsRead(index, notificacionId);
-
-console.log(this.service.data[index]);
+		
+		if(self.service.data[index].Leida == 0){
+			self.setAsRead(index, notificacionId);
+		}
+		
 		mainView.router.load({ 
 			url: 'pages/detalle_notificacion.html',
-			context: this.service.data[index]
+			context: self.service.data[index]
 		});
 	
 
 	},
 	defaultRangeView: function () {
-		this.service.rangeNotification.DDFecha = '01/03/2017';
-		//this.service.convertDate(new Date());
-		this.service.rangeNotification.HHFecha = this.service.convertDate(new Date());
+		var self = this;
+		//this.service.rangeNotification.DDFecha = '01/03/2017';
+		self.service.rangeNotification.DDFecha = this.service.convertDate(new Date());
+		self.service.rangeNotification.HHFecha = this.service.convertDate(new Date());
 	}
 }

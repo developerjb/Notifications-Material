@@ -1,16 +1,86 @@
-<ul>
-	{{#each this.items}}
-	<li>
-		<a href="#" class="item-link item-content">
-			<div class="item-inner">
-				<div class="item-title-row">
-					<div class="item-title">{{TituloMensaje}}</div>
-					<div class="item-after">{{FechaGroup}}</div>
+<div data-page="Notificaciones" class="page cached">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<!--<div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>-->
+			<div class="left"><a href="#" class="link open-notificaciones"><i class="material-icons">&#xE5D2;</i></a></div>
+			<div class="center">Notificaciones</div>
+			<div class="right"><a href="#" data-popup=".popup-rangeNotification" class="link open-popup"><i id="_filterNotification" class="material-icons">&#xE152;</i></a></div>
+		</div>
+	</div>
+	<div class="popup popup-rangeNotification">
+		<div class="view navbar-fixed">
+			<div class="pages">
+				<div class="page">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<div class="left"><a href="#" class="link remove-range-notification"><i class="material-icons">&#xE5CD;</i></a></div>
+							<div class="center">Rangos</div>
+							<div class="right"><a href="#" class="link apply-range-notification"><i class="material-icons">&#xE5CA;</i></a></div>
+						</div>
+					</div>
+					<div class="page-content">
+						<div class="list-block" style="margin-top: 0px">
+							<ul>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">Desde</div>
+											<div class="item-input">
+												<input id="DDFechaNotif" type="date" name="name" placeholder="DD/MM/YYYY">
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-inner">
+											<div class="item-title label">Hasta</div>
+											<div class="item-input">
+												<input id="HHFechaNotif" type="date" name="name" placeholder="DD/MM/YYYY">
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
-				<div class="item-subtitle">{{TextoMensaje}}</div>
-				<div class="item-text">{{UsuarioOrigen}}</div>
 			</div>
-		</a>
-	</li>
-	{{/each}}
-</ul>
+		</div>
+	</div>
+	<form data-search-list=".lb-notificaciones" class="searchbar searchbar-init sb-notificaciones">
+		<div class="searchbar-input">
+			<input type="search" placeholder="Buscar..." />
+			<a href="#" class="searchbar-clear"></a>
+		</div>
+	</form>
+	<div class="searchbar-overlay"></div>
+	<div class="popover popover-notificaciones">
+		<div class="popover-angle"></div>
+		<div class="popover-inner">
+			<div class="list-block">
+				<ul>
+					<li><a onclick="loadPageCustom('Autorizaciones')" class="list-button item-link">Autorizaciones</a></li>
+					<li><a onclick="loadPageCustom('Preferencias')" class="list-button item-link">Preferencias</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="page-content pull-to-refresh-content" data-ptr-distance="55">
+		<div class="pull-to-refresh-layer">
+			<div class="preloader"></div>
+			<div class="pull-to-refresh-arrow"></div>
+		</div>
+		<div class="list-block virtual-list searchbar-found media-list lb-notificaciones" style="margin-top: 0px">
+		</div>
+		<div class="list-block searchbar-not-found" style="margin-top: 0px">
+			<ul>
+				<li class="item-content">
+					<div class="item-inner">
+						<div class="item-title">No hay elementos.</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
