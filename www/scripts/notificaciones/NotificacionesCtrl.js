@@ -17,7 +17,7 @@ NotificacionesCtrl = {
 		sbNotificaciones = myApp.searchbar('.sb-notificaciones');
 		vlNotificaciones = myApp.virtualList('.lb-notificaciones', {
 			items: self.service.data,
-			emptyTemplate: '<li class="item-content"><div class="item-inner"><div class="item-title">No hay elementos..</div></div></li>',
+			emptyTemplate: '<li class="item-content"><div class="item-inner"><div class="item-title">No hay elementos.</div></div></li>',
 			searchAll: function (query, items) {
 				var found = [];
 				for (var i = 0; i < items.length; i++) {
@@ -26,7 +26,7 @@ NotificacionesCtrl = {
 				return found;
 			},
 			template: '<li style="height: 83px;">' +
-			'<a onclick="NotificacionesCtrl.loadPageAutorizacion({{@index}},{{Notificacion_Id}})" class="item-link item-content">' +
+			'<a onclick="NotificacionesCtrl.loadPageNotificacion({{@index}},{{Notificacion_Id}})" class="item-link item-content">' +
 				'<div class="item-inner">' +
 					'<div class="item-title-row">' +
 						'<div class="item-title">{{blackface TituloMensaje Leida}}</div>' +
@@ -37,13 +37,7 @@ NotificacionesCtrl = {
 				'</div>' +
 			'</a>' +
 			'</li>',
-			height: 83,
-			// function(){
-			// 	if($$('html').height() > 600){
-			// 		return 93
-			// 	}
-			// 	return 83; 
-			// },
+			height: 83
 		});
 		
 		$$('.popup-rangeNotification').on('popup:open', function () {
@@ -52,7 +46,7 @@ NotificacionesCtrl = {
 			$$('#HHFechaNotif').val(s.formatDateString(s.rangeNotification.HHFecha,'/','-'));
 		});
 
-		function loadDateGetRangos (dd, hh){
+		function loadDateGetRangos (dd, hh){ 
 			var s = self.service;
 			myApp.showPreloader('Obteniendo...');
 			function combination(c,v){
@@ -94,7 +88,7 @@ NotificacionesCtrl = {
 			self.service.data[index].Leida = 1;
 		});
 	},
-	loadPageAutorizacion: function (index, notificacionId) {
+	loadPageNotificacion: function (index, notificacionId) {
 		var self = this;
 		if(navigator.connection.type === 'none') {
 			myApp.alert('No hay conexión a Internet.', 'No se puede recibir datos');

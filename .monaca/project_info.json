@@ -5,10 +5,19 @@
     "framework_version": "3.5",
     "xcode_version": "7",
     "cordova_version": "6.2",
-    "plugin_settings": [],
+    "plugin_settings": {
+        "phonegap-plugin-push": {
+            "variables": [
+                "SENDER_ID=\"243712597809\""
+            ]
+        }
+    },
     "external_plugins": [
         "cordova-plugin-whitelist@1.2.2",
         "cordova-plugin-splashscreen@3.2.2",
-        "cordova-custom-config@2.0.3"
+        "cordova-custom-config@2.0.3",
+        "cordova-plugin-inappbrowser@1.5.0",
+        "cordova-plugin-network-information@1.2.1",
+        "cordova-plugin-statusbar@2.1.3"
     ]
 }

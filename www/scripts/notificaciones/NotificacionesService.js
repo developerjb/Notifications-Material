@@ -28,8 +28,8 @@ NotificacionesService = {
 		var self = this;
 		var data = {
 			id: 'CLO-2',
-			Usuario_Id: PreferenciasService.values.usuario_id,
-			_userName: PreferenciasService.values.usuario_id,
+			Usuario_Id: PreferenciasService.values.username,
+			_userName: PreferenciasService.values.username,
 			_connectionStringId: '-',//PreferenciasService.values.conexion
 			hasRange: 1,
 			DDFecha: self.rangeNotification.DDFecha,
@@ -62,7 +62,7 @@ NotificacionesService = {
 		var _data = {
 			id: 'CLO-4',
 			Notificacion_Id: notificacionId,
-			_userName: PreferenciasService.values.usuario_id,
+			_userName: PreferenciasService.values.username,
 			_connectionStringId: '-'
 		};
 

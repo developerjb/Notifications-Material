@@ -1,45 +1,95 @@
-<form class="list-block inputs-list" id="preferencias" style="margin-top: 0px">
+<div data-page="Preferencias" class="page cached">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="#" class="link open-preferencias"><i class="material-icons">&#xE5D2;</i></a></div>
+      <div class="center">Ajustes</div>
+    </div>
+  </div>
+
+  <div class="popover popover-preferencias">
+    <div class="popover-angle"></div>
+    <div class="popover-inner">
+      <div class="list-block">
+        <ul>
+          <li><a onclick="loadPageCustom('Notificaciones')" class="list-button item-link">Notificaciones</a></li>
+          <li><a onclick="loadPageCustom('Autorizaciones')" class="list-button item-link">Autorizaciones</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="list-block" style="margin:0">
+      <ul>
+        <li>
+          <div class=" item-content">
+            <div class="item-media"><i class="material-icons ">&#xE90F;</i></div>
+            <div class="item-inner">
+              <div class="item-title">Modo Nocturno</div>
+              <label class="label-switch">
+                  <input type="checkbox" name="modo_nocturno" id="modo_nocturno" value="true">
+                  <div class="checkbox" ></div>
+                </label>
+            </div>
+          </div>
+        </li>
+        <li onclick="AutenticacionCtrl.logout()">
+          <a class="item-link item-content">
+            <div class="item-media"><i class="material-icons">&#xE8AC;</i></div>
+            <div class="item-inner">
+              <div class="item-title">Cerrar Sesión</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<!--<form class="list-block inputs-list" id="preferencias" style="margin-top: 0px">
   <div class="content-block-title"><b>Aspecto</b></div>
   <div class="list-block">
-  <ul>
-    <li>
-      <div class="item-content">
-        <div class="item-inner">
-          <div class="item-title label">Modo Nocturno</div>
-          <div class="item-input">
-            <label class="label-switch">
+    <ul>
+      <li>
+        <div class="item-content">
+          <div class="item-inner">
+            <div class="item-title label">Modo Nocturno</div>
+            <div class="item-input">
+              <label class="label-switch">
               <input type="checkbox">
               <div class="checkbox"></div>
             </label>
+            </div>
           </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
   </div>
-  
+
   <div class="content-block-title"><b>Conexion</b></div>
   <div class="list-block">
-	  <ul>
-	    <li>
-	      <div class="item-content">
-	        <div class="item-inner">
-	          <div class="item-title label">Servidor</div>
-	          <div class="item-input item-input-field">
-	            <input type="text" placeholder="10.12.13.164:9292" class="">
-	          </div>
-	        </div>
-	      </div>
-	    </li>
-	  </ul>
+    <ul>
+      <li>
+        <div class="item-content">
+          <div class="item-inner">
+            <div class="item-title label">Servidor</div>
+            <div class="item-input item-input-field">
+              <input type="text" placeholder="10.12.13.164:9292" class="">
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
-  
+
   <div class="list-block">
-  	<ul>
-	  	<li>
-	      <a href="#" class="button button-raised">Logout</a>
-	    </li>
-  	</ul>
+    <ul>
+      <li>
+        <a href="#" class="button button-raised">Logout</a>
+      </li>
+    </ul>
   </div>
-  
-</form>
+
+</form>-->

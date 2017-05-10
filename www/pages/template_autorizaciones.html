@@ -6,16 +6,15 @@
 			<div class="right"><a href="#" data-popup=".popup-rangeAutorizacion" class="link open-popup"><i id="_filterAutorizacion" class="material-icons">&#xE152;</i></a></div>
 		</div>
 	</div>
-
 	<div class="popup popup-rangeAutorizacion">
 		<div class="view navbar-fixed">
 			<div class="pages">
 				<div class="page">
 					<div class="navbar">
 						<div class="navbar-inner">
-							<div class="left"><a href="#" class="link remove-range-notification"><i class="material-icons">&#xE5CD;</i></a></div>
+							<div class="left"><a href="#" class="link remove-range-autorizacion"><i class="material-icons">&#xE5CD;</i></a></div>
 							<div class="center">Rangos</div>
-							<div class="right"><a href="#" class="link apply-range-notification"><i class="material-icons">&#xE5CA;</i></a></div>
+							<div class="right"><a href="#" class="link apply-range-autorizacion"><i class="material-icons">&#xE5CA;</i></a></div>
 						</div>
 					</div>
 					<div class="page-content">
@@ -48,7 +47,13 @@
 			</div>
 		</div>
 	</div>
-
+	<form data-search-list=".lb-autorizaciones" class="searchbar searchbar-init sb-autorizaciones">
+		<div class="searchbar-input">
+			<input type="search" placeholder="Buscar..." />
+			<a href="#" class="searchbar-clear"></a>
+		</div>
+	</form>
+	<div class="searchbar-overlay"></div>
 	<div class="popover popover-autorizaciones">
 		<div class="popover-angle"></div>
 		<div class="popover-inner">
@@ -60,15 +65,12 @@
 			</div>
 		</div>
 	</div>
-		<form data-search-list=".lb-autorizaciones" class="searchbar searchbar-init sb-autorizaciones">
-		<div class="searchbar-input">
-			<input type="search" placeholder="Buscar..." />
-			<a href="#" class="searchbar-clear"></a>
+	<div class="page-content pull-to-refresh-content ptr-autorizaciones" data-ptr-distance="55">
+		<div class="pull-to-refresh-layer">
+			<div class="preloader"></div>
+			<div class="pull-to-refresh-arrow"></div>
 		</div>
-	</form>
-	<div class="searchbar-overlay"></div>
-	<div class="page-content">
-		<div class="list-block virtual-list  media-list lb-autorizaciones" style="margin-top: 0px">
+		<div class="list-block virtual-list searchbar-found media-list lb-autorizaciones" style="margin-top: 0px">
 		</div>
 		<div class="list-block searchbar-not-found" style="margin-top: 0px">
 			<ul>

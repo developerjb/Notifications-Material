@@ -1,0 +1,110 @@
+<div data-page="Autorizacion" class="page">
+    <!--<div class="navbar">
+        <div class="navbar-inner">
+            <div class="left"><a href="#" class="back link"><i class="icon icon-back"></i></a></div>
+            <div class="center">Detalles</div>
+            <div class="left"><a href="#" class="link">
+                
+                </div>
+        </div>
+    </div>-->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left"><a href="#" class="back link"><i class="material-icons">&#xE5C4;</i></a></div>
+            <div class="center">Detalles</div>
+            <div class="right"><a href="#" class="link" id="responder"><i class="material-icons">&#xE5CA;</i></a></div>
+        </div>
+    </div>
+
+    <div class="popup popup-adjuntos">
+        <div class="view navbar-fixed">
+            <div class="pages">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left"><a href="#" class="link close-popup"><i class="material-icons">&#xE5C4;</i></a></div>
+                            <div class="center">Adjuntos</div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="list-block" style="margin-top: 0px" id="list-adjuntos">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="page-content" style="padding-top: 52px;" >
+        <div class="content-block-title">DATOS BÁSICOS</div>
+        <div class="list-block">
+            <ul>
+                {{#each props}}
+                 {{#js_compare "this.label == 'Observaciones' || this.label == 'Observaciones1' || this.label == 'Observaciones2'|| this.label == 'DatosAdic' || this.label == 'Descripcion_Adicional' || this.label == 'DescripcionAdicional'|| this.label == 'DescripcionesAdicionales'"}}
+                <li class="accordion-item">
+                    <a href="#" class="item-link item-content">
+                        <div class="item-inner">
+                            <div class="item-title">{{translate this.label}}</div>
+                        </div>
+                    </a>
+                    <div class="accordion-item-content">
+                        <div class="content-block">
+                            <p>
+                                {{this.value}}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                {{else}}
+                {{#js_compare "this.value.length > 20"}}
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">{{this.value}}</div>
+                    </div>
+                </li>
+                {{else}}
+                <li class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title">{{translate this.label}}</div>
+                        <div class="item-after">{{this.value}}</div>
+                    </div>
+                </li>
+                {{/js_compare}} 
+                {{/js_compare}}
+                 {{/each}}
+            </ul>
+        </div>
+
+
+        <div class="content-block-title" id="titulo-historico-estados">Histórico de Estados</div>
+        <div class="row no-gutter" id="cargando">
+            <div class="col-auto"></div>
+            <div class="col-auto"></div>
+            <div class="col-auto" style="text-align: center"><span class="preloader cargar_respuestas"></span></div>
+            <div class="col-auto"></div>
+            <div class="col-auto"></div>
+        </div>
+        <div class="list-block" id="respuestas">
+        </div>
+        <div class="content-block-title">Propiedades</div>
+        <div class="list-block" id="propiedades">
+            <ul>
+                <li>
+                    <a href="#" class="item-link item-content open-adjuntos">
+                        <div class="item-media"><i class="material-icons">&#xE2C0;</i></div>
+                        <div class="item-inner">
+                            <div class="item-title">Adjuntos</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+
+    </div>
+</div>
+
+<!--<div class="pages">
+</div>-->
