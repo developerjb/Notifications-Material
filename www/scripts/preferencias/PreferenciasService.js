@@ -19,7 +19,7 @@ PreferenciasService = {
 			method: 'POST',
 			timeout: AJAX_TIMEOUT,
 			data: {
-				usuario: PreferenciasService.values.usuario_id,
+				usuario: PreferenciasService.values.username,
 				plataforma: 'ANDROID',
 				canal: deviceRegistrationId
 			},

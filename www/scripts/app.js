@@ -1,6 +1,8 @@
 var notificacionesCtrl = autorizacionesCtrl = preferenciasCtrl = autenticacionCtrl = sbNotificaciones =
 	vlNotificaciones = sbAutorizaciones = vlAutorizaciones = null,
 	dbn = new PouchDB('dbNotifications'),
+	push,
+	deviceTokenRegister,
 	myApp = new Framework7({
 		material: true,
 		template7Pages: true,
@@ -26,27 +28,70 @@ function onBackKeyDown() {
 document.addEventListener('deviceready', function () {
 	document.addEventListener("backbutton", onBackKeyDown, false);
 
-	AutenticacionCtrl.init(function (params) {
-		//console.log(params);
-		if (params) {			
-			AutenticacionCtrl.startLogin();
-		} else {
-			startApp()
+	push = PushNotification.init({
+		android: {
+			senderID: "243712597809"
 		}
 	})
+
+	push.on('registration', function (data) {
+		deviceTokenRegister = data.registrationId;
+
+		//PreferenciasService.saveDeviceRegistrationId(){}
+
+		AutenticacionCtrl.init(function (params) {
+			//console.log(params);
+			if (params) {
+				AutenticacionCtrl.startLogin();
+			} else {
+				startApp()
+			}
+		})
+
+	});
+
+	push.on('notification', function (data) {
+		// data.message,
+		// data.title,
+		// data.count,
+		// data.sound,
+		// data.image,
+		// data.additionalData
+		//alert(JSON.stringify(data));
+		var resp = JSON.stringify(data);
+		if (resp.additionalData.notificationData.Tipo == "AUT") {
+			loadPageCustom('Autorizaciones', function () {
+					myApp.pullToRefreshTrigger($$('.ptr-autorizaciones'));
+			})
+		} else {
+			loadPageCustom('Notificaciones', function () {
+				myApp.pullToRefreshTrigger($$('.ptr-notificaciones'));
+			})
+		}
+
+
+	});
+
+	push.on('error', function (e) {
+		// e.message
+		//alert(e.message);
+	});
+
 })
 
 function startApp() {
-	mainView.router.load({
-		url: 'pages/template_notificaciones.html',
-		animatePages: false
-	});
+	// mainView.router.load({
+	// 	url: 'pages/template_notificaciones.html',
+	// 	animatePages: false
+	// });
+	loadPageCustom('Notificaciones');
+
 	setDatabase(function () {
 		initApp();
 	});
 }
 
-function loadPageCustom(page) {
+function loadPageCustom(page, callback) {
 	var template = {
 		Notificaciones: 'pages/template_notificaciones.html',
 		Autorizaciones: 'pages/template_autorizaciones.html',
@@ -65,19 +110,13 @@ function loadPageCustom(page) {
 	} else {
 		mainView.router.load({ pageName: page, animatePages: false });
 	}
-
-
 	if (page == 'Notificaciones') {
-		vlNotificaciones.update();
+		//vlNotificaciones.update();
 	}
-
-
 	if (page == 'Preferencias') {
-
 	}
-
-
 	myApp.closeModal();
+	if (callback) callback();
 }
 
 myApp.onPageInit('Preferencias', function () {

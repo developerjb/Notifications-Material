@@ -3,7 +3,7 @@ NotificacionesCtrl = {
 	init: function () {
 		var self = this;
 		
-		var ptrNotificaciones = $$('.pull-to-refresh-content');
+		var ptrNotificaciones = $$('.ptr-notificaciones');
 		ptrNotificaciones.on('ptr:refresh', function (e) {
 			NotificacionesService.getAllForUser(function (data) {
 				sbNotificaciones.clear();
