@@ -58,16 +58,31 @@ document.addEventListener('deviceready', function () {
 		// data.image,
 		// data.additionalData
 		//alert(JSON.stringify(data));
-		var resp = JSON.stringify(data);
-		if (resp.additionalData.notificationData.Tipo == "AUT") {
-			loadPageCustom('Autorizaciones', function () {
+		console.log(data);
+		//var resp = JSON.pa(data);
+
+		function directSelection(data) {
+			if (data.additionalData.notificationData.Tipo == "AUT") {
+				loadPageCustom('Autorizaciones', function () {
 					myApp.pullToRefreshTrigger($$('.ptr-autorizaciones'));
+				})
+			} else {
+				loadPageCustom('Notificaciones', function () {
+					myApp.pullToRefreshTrigger($$('.ptr-notificaciones'));
+				})
+			}
+		}
+
+
+		if (data.additionalData.coldstart) {
+			initApp(function () {
+				directSelection(data)
 			})
 		} else {
-			loadPageCustom('Notificaciones', function () {
-				myApp.pullToRefreshTrigger($$('.ptr-notificaciones'));
-			})
+			directSelection(data);
 		}
+
+
 
 
 	});
@@ -110,11 +125,18 @@ function loadPageCustom(page, callback) {
 	} else {
 		mainView.router.load({ pageName: page, animatePages: false });
 	}
+
+
 	if (page == 'Notificaciones') {
 		//vlNotificaciones.update();
 	}
+
+
 	if (page == 'Preferencias') {
+
 	}
+
+
 	myApp.closeModal();
 	if (callback) callback();
 }
@@ -136,7 +158,7 @@ myApp.onPageInit('Preferencias', function () {
 
 })
 
-function initApp() {
+function initApp(callback) {
 	myApp.showPreloader('Obteniendo...');
 	//GET de registro de Notification
 	NotificacionesCtrl.defaultRangeView();
@@ -147,6 +169,7 @@ function initApp() {
 		AutorizacionesCtrl.init();
 		AutorizacionCtrl.init();
 		myApp.hidePreloader();
+		if (callback) callback();
 	})
 
 

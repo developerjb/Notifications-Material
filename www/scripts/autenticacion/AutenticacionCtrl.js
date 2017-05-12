@@ -17,7 +17,7 @@ AutenticacionCtrl = {
 			myApp.modal({
 				title: 'Servidor IGGLOBAL',
 				text: 'URL ó IP pública',
-				afterText: '<input type="text" class="modal-text-input" value="' + server + '">',
+				afterText: '<div class="input-field"><input type="text" class="modal-text-input"></div>' ,
 				buttons: [
 					{
 						text: 'Aceptar',

@@ -95,7 +95,7 @@
   <preference name="KeepRunning" value="true"/>
   <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
-  <preference name="Orientation" value="default"/>
-  <preference name="SplashScreenDelay" value="1000"/>
+  <preference name="Orientation" value="portrait"/>
+  <preference name="SplashScreenDelay" value="3500"/>
   <preference name="Fullscreen" value="false"/>
 </widget>
