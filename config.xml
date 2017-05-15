@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="com.example.helloworld" version="1.0.0">
-  <name>IGGLOBAL Notifications</name>
+<widget xmlns="http://www.w3.org/ns/widgets" id="com.baseglobal.igglobalnotificationshub" version="3.0.1">
+  <name>Notifications</name>
   <description>Made with Monaca (http://monaca.mobi)</description>
   <author/>
   <content src="index.html"/>
@@ -73,11 +73,11 @@
     <icon src="/res/android/icon/xxhdpi.png" density="xxhdpi"/>
     <icon src="/res/android/icon/xxxhdpi.png" density="xxxhdpi"/>
     <splash src="/res/android/screen/splash-port-ldpi.9.png" density="port-ldpi"/>
-    <splash src="/res/android/screen/splash-port-mdpi.9.png" density="port-mdpi"/>
-    <splash src="/res/android/screen/splash-port-hdpi.9.png" density="port-hdpi"/>
-    <splash src="/res/android/screen/splash-port-xhdpi.9.png" density="port-xhdpi"/>
-    <splash src="/res/android/screen/splash-port-xxhdpi.9.png" density="port-xxhdpi"/>
-    <splash src="/res/android/screen/splash-port-xxxhdpi.9.png" density="port-xxxhdpi"/>
+    <splash src="/res/android/screen/splash-port-hdpi.png" density="port-hdpi"/>
+    <splash src="/res/android/screen/splash-port-mdpi.png" density="port-mdpi"/>
+    <splash src="/res/android/screen/splash-port-xhdpi.png" density="port-xhdpi"/>
+    <splash src="/res/android/screen/splash-port-xxhdpi.png" density="port-xxhdpi"/>
+    <splash src="/res/android/screen/splash-port-xxxhdpi.png" density="port-xxxhdpi"/>
   </platform>
   <platform name="windows">
     <icon src="/res/winrt/icon/package_logo_winrt.png" target="StoreLogo"/>
@@ -96,6 +96,6 @@
   <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="Orientation" value="portrait"/>
-  <preference name="SplashScreenDelay" value="3500"/>
-  <preference name="Fullscreen" value="false"/>
+  <preference name="SplashScreenDelay" value="5000"/>
+  <preference name="Fullscreen" value="true"/>
 </widget>
