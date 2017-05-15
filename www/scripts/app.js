@@ -92,6 +92,11 @@ document.addEventListener('deviceready', function () {
 		//alert(e.message);
 	});
 
+	setTimeout(function() {
+		navigator.splashscreen.hide();
+	}, 2000);
+	//navigator.splashscreen.hide();
+
 })
 
 function startApp() {
