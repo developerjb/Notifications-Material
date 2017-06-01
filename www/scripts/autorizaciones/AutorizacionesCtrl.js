@@ -26,7 +26,12 @@ AutorizacionesCtrl = {
 					for (var i = 0; i < items.length; i++) {
 						var m = JSON.parse(items[i].Mensaje);
 						if (items[i].FechaGroup != undefined && m.Title != undefined && m.Subtitle != undefined && m.Subtitle != undefined && m.Text1 != undefined && m.Text2) {
-							if (items[i].FechaGroup.indexOf(query) >= 0 || m.Title.indexOf(query) >= 0 || m.Subtitle.indexOf(query) >= 0 || m.Text1.indexOf(query) >= 0 || m.Text2.indexOf(query) >= 0 || query.trim() === '') found.push(i);
+							if (items[i].FechaGroup.toLowerCase().indexOf(query.toLowerCase()) >= 0 || 
+							m.Title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
+							m.Subtitle.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
+							m.Text1.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
+							m.Text2.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
+							query.trim() === '') found.push(i);
 						}
 					}
 					return found;

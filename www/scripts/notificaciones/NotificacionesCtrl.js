@@ -21,7 +21,11 @@ NotificacionesCtrl = {
 			searchAll: function (query, items) {
 				var found = [];
 				for (var i = 0; i < items.length; i++) {
-					if (items[i].TituloMensaje.indexOf(query) >= 0 || items[i].FechaGroup.indexOf(query) >= 0 || items[i].TextoMensaje.indexOf(query) >= 0 || items[i].UsuarioOrigen.indexOf(query) >= 0 || query.trim() === '') found.push(i);
+					if (items[i].TituloMensaje.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
+					items[i].FechaGroup.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
+					items[i].TextoMensaje.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
+					items[i].UsuarioOrigen.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
+					query.trim() === '') found.push(i);
 				}
 				return found;
 			},
